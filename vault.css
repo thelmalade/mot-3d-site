@@ -1,0 +1,81 @@
+/* Course vault. Reuses the tokens from styles.css (linked first). */
+body.vault { background: var(--bg); min-height: 100dvh; }
+body.vault::before {
+  content: ""; position: fixed; inset: 0; z-index: -2;
+  background: radial-gradient(900px 520px at 80% -10%, rgba(232,161,60,.10), transparent 60%), var(--bg);
+}
+
+/* top bar */
+.vtop { position: sticky; top: 0; z-index: 20; height: 64px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(16px, 4vw, 36px); background: rgba(11,11,13,.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(8px); }
+.vtop .home { display: flex; align-items: center; }
+.vtop .home img { height: 36px; width: auto; display: block; }
+.vtop .who { display: flex; align-items: center; gap: 12px; font: 500 13px var(--mono); color: var(--muted); }
+.vtop .who .av { width: 30px; height: 30px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--line); display: grid; place-items: center; color: var(--accent); font-weight: 700; }
+.vtop .who button { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 6px 13px; font: 600 12px var(--sans); cursor: pointer; }
+.vtop .who button:hover { border-color: var(--accent); color: var(--accent); }
+
+.vwrap { max-width: 1180px; margin: 0 auto; padding: clamp(22px, 4vw, 40px) clamp(16px, 4vw, 36px) 80px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 26px; align-items: start; }
+@media (max-width: 920px) { .vwrap { grid-template-columns: 1fr; } }
+
+.prog-eyebrow { font: 600 11.5px var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+.prog-title { font-size: clamp(28px, 4vw, 46px); margin: 10px 0 8px; }
+.prog-tag { color: var(--muted); max-width: 52ch; margin-bottom: 22px; }
+
+/* player stage */
+.stage { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #000; position: relative; aspect-ratio: 16/9; }
+.stage img { width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.stage .play { position: absolute; inset: 0; display: grid; place-items: center; }
+.stage .play button { width: 74px; height: 74px; border-radius: 50%; border: none; background: var(--accent); color: var(--accent-ink); font-size: 26px; cursor: pointer; display: grid; place-items: center; transition: transform .2s, background .2s; }
+.stage .play button:hover { transform: scale(1.06); background: var(--accent-bright); }
+.stage.playing img { opacity: .85; }
+.stage .nowbar { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 18px; background: linear-gradient(transparent, rgba(0,0,0,.85)); display: flex; align-items: center; gap: 12px; }
+.stage .nowbar .bar { flex: 1; height: 4px; border-radius: 999px; background: rgba(255,255,255,.2); overflow: hidden; }
+.stage .nowbar .bar i { display: block; height: 100%; width: 0; background: var(--accent); }
+.stage .nowbar .time { font: 500 12px var(--mono); color: var(--text); }
+
+/* locked overlay */
+.lock-over { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; background: rgba(11,11,13,.78); backdrop-filter: blur(4px); padding: 24px; }
+.lock-over .lk { font-size: 28px; color: var(--accent); }
+.lock-over h3 { font-size: 22px; margin: 10px 0 6px; }
+.lock-over p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+.lock-over .price { font: 700 30px var(--mono); color: var(--accent); margin-bottom: 16px; }
+
+.now-meta { margin-top: 18px; }
+.now-meta h2 { font-size: 20px; }
+.now-meta p { color: var(--muted); font-size: 14px; margin-top: 8px; }
+
+/* curriculum sidebar */
+.curric { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden; }
+.curric .ch { padding: 18px 20px; border-bottom: 1px solid var(--line); }
+.curric .ch .pl { display: flex; justify-content: space-between; align-items: center; }
+.curric .pbar { height: 5px; border-radius: 999px; background: var(--line); margin-top: 12px; overflow: hidden; }
+.curric .pbar i { display: block; height: 100%; background: var(--accent); }
+.curric .pmeta { font: 500 12px var(--mono); color: var(--muted); }
+.mod { border-bottom: 1px solid var(--line-soft); }
+.mod:last-child { border-bottom: none; }
+.mod .mh { padding: 15px 20px; font: 600 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lesson { display: flex; align-items: center; gap: 12px; padding: 12px 20px; cursor: pointer; transition: background .15s; }
+.lesson:hover { background: var(--surface-2); }
+.lesson .ic { width: 26px; height: 26px; border-radius: 50%; flex: none; display: grid; place-items: center; font-size: 12px; border: 1px solid var(--line); color: var(--muted); }
+.lesson.playable .ic { border-color: var(--accent); color: var(--accent); }
+.lesson.active { background: var(--surface-2); }
+.lesson.active .ic { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.lesson .t { font-size: 14px; flex: 1; }
+.lesson.locked .t { color: var(--muted); }
+.lesson .len { font: 500 12px var(--mono); color: var(--faint); }
+.lesson .free { font: 600 10px var(--mono); color: var(--accent); border: 1px solid var(--line); padding: 1px 6px; border-radius: 999px; }
+
+/* sign-in gate */
+.gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: rgba(8,8,10,.82); backdrop-filter: blur(10px); padding: 22px; }
+.gate .card { width: 100%; max-width: 410px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 34px; }
+.gate .mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); margin-bottom: 18px; }
+.gate h2 { font-size: 24px; }
+.gate .sub { color: var(--muted); font-size: 14px; margin: 8px 0 24px; }
+.gate label { display: block; font: 600 12px var(--mono); color: var(--muted); margin-bottom: 7px; letter-spacing: .04em; }
+.gate input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: 500 14px var(--sans); margin-bottom: 16px; }
+.gate input:focus { outline: none; border-color: var(--accent); }
+.gate .err { color: var(--down); font-size: 13px; margin-bottom: 14px; min-height: 18px; }
+.gate .btn { width: 100%; justify-content: center; margin-bottom: 12px; }
+.gate .alt { text-align: center; color: var(--muted); font-size: 13px; }
+.gate .alt a { color: var(--accent); }

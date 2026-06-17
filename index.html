@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Max Options Trading - Trade the Max Way</title>
+  <meta name="description" content="Premium WealthCharts and TradingView indicators, structured courses, coaching and a 70,000-trader community. Statistical precision and daily discipline." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+  } }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <canvas id="globe-canvas" aria-hidden="true"></canvas>
+  <div id="label-layer" aria-hidden="true"></div>
+  <div id="page-flash" aria-hidden="true"></div>
+
+  <div id="file-warning" style="display:none;position:fixed;inset:0;z-index:9999;background:#0b0b0d;color:#ece8e1;font-family:system-ui,sans-serif;place-items:center;text-align:center;padding:24px">
+    <div style="max-width:560px">
+      <div style="width:34px;height:34px;border-radius:9px;background:#e8a13c;margin:0 auto 22px"></div>
+      <h2 style="font-size:26px;margin-bottom:14px">Run it through a local server</h2>
+      <p style="color:#97948d;line-height:1.6;margin-bottom:20px">The 3D globe and live data load as JavaScript modules, which browsers block over <code>file://</code>. In this folder, run one of these and open the URL it prints:</p>
+      <pre style="text-align:left;background:#161619;border:1px solid #2a2a31;border-radius:12px;padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:13.5px;color:#ffc061;overflow:auto">python -m http.server 8123
+<span style="color:#62605b"># then open  http://localhost:8123</span></pre>
+      <p style="color:#62605b;font-size:13px;margin-top:18px">Tip: double-click <b>start.cmd</b> in this folder to do it automatically.</p>
+    </div>
+  </div>
+  <script>if (location.protocol === "file:") document.getElementById("file-warning").style.display = "grid";</script>
+
+  <nav>
+    <a class="logo" href="index.html" aria-label="Max Options Trading home"><img src="assets/mot-logo.png" alt="Max Options Trading" /></a>
+    <div class="nav-links">
+      <a href="#hero">The Floor</a>
+      <a href="#props">Partners</a>
+      <a href="vault.html">Vault</a>
+      <a href="#network">MOT Network</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#">Log in</a>
+      <a class="btn btn-primary" href="#community">Join free</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO over the live globe -->
+    <section id="hero">
+      <div class="wrap">
+        <div class="copy">
+          <p class="eyebrow">Statistical precision, daily discipline</p>
+          <h1>Trade the Max way. <span class="h1-accent">Discipline is the edge.</span></h1>
+          <p class="lead">Premium WealthCharts and TradingView indicators, structured courses, and a 70,000-trader floor.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#community">Join free Discord</a>
+            <a class="btn btn-ghost" href="#indicators">Browse indicators</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- stats -->
+    <section id="stats">
+      <div class="wrap">
+        <div class="row">
+          <div class="cell reveal"><div class="n">70,000+</div><div class="l">Traders in the community</div></div>
+          <div class="cell reveal"><div class="n">7</div><div class="l">Premium indicators</div></div>
+          <div class="cell reveal"><div class="n">5+</div><div class="l">Hours daily live education</div></div>
+          <div class="cell reveal"><div class="n">1 day</div><div class="l">Fastest path to funded</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM INDICATORS -->
+    <section id="indicators">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Our premium indicators</p>
+          <h2>Professional-grade tools, built for discipline.</h2>
+          <p>Rule-based entries and exits with built-in risk control, made for WealthCharts and TradingView across futures, options and stocks.</p>
+        </div>
+        <div class="ind-grid">
+          <a class="ind reveal" href="indicator.html?ind=advanced-orb">
+            <span class="tag">Flagship</span>
+            <div><h3>Advanced ORB</h3><p>Specialize in opening range breakouts with pinpoint precision.</p></div>
+            <span class="ind-go">Explore</span>
+          </a>
+          <a class="ind reveal" href="indicator.html?ind=quantum-shift">
+            <span class="tag">Momentum</span>
+            <div><h3>Quantum Shift</h3><p>Real-time trend shifts with multi-timeframe confluence.</p></div>
+            <span class="ind-go">Explore</span>
+          </a>
+          <a class="ind reveal" href="indicator.html?ind=range-breaker">
+            <span class="tag">Range</span>
+            <div><h3>Range Breaker</h3><p>Identify consolidation zones and ride the breakouts.</p></div>
+            <span class="ind-go">Explore</span>
+          </a>
+          <a class="ind reveal" href="indicator.html?ind=max-value-gap">
+            <span class="tag">Gaps</span>
+            <div><h3>Max Value Gap</h3><p>Track liquidity gaps and trade alongside institutions.</p></div>
+            <span class="ind-go">Explore</span>
+          </a>
+          <a class="ind reveal" href="indicator.html?ind=pivot-hunter-pro">
+            <span class="tag">Levels</span>
+            <div><h3>Pivot Hunter Pro</h3><p>Detect, validate and trade real-time support and resistance.</p></div>
+            <span class="ind-go">Explore</span>
+          </a>
+          <a class="ind reveal" href="indicator.html?ind=p2p-algo">
+            <span class="tag">Smart money</span>
+            <div><h3>P2P Algo</h3><p>Reveal where smart money is active and where price reacts.</p></div>
+            <span class="ind-go">Explore</span>
+          </a>
+          <a class="ind reveal" href="indicator.html?ind=flowx">
+            <span class="tag">Scalping</span>
+            <div><h3>FlowX</h3><p>ICT-based scalping: liquidity grabs, structure, automated entries.</p></div>
+            <span class="ind-go">Explore</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAT PROPS -->
+    <section id="props">
+      <div class="wrap">
+        <article class="prop-feature reveal">
+          <div class="pf-intro">
+            <div class="pf-eyebrow">Get Funded</div>
+            <h2 class="pf-title">Get Funded Faster</h2>
+            <p class="pf-lead">Exclusive discounts on the firms and tools Max actually uses and trusts.</p>
+            <div class="pf-row"><a class="btn btn-primary" href="#">Compare prop firms</a></div>
+          </div>
+          <ul class="pf-list">
+            <li>Vetted by our community of over 70,000 traders</li>
+            <li>The lowest prices available</li>
+            <li>Exclusive member perks</li>
+          </ul>
+        </article>
+
+        <div class="deals reveal">
+          <button class="deals-nav prev" id="deals-prev" type="button" aria-label="Scroll partners left" disabled>&#8249;</button>
+          <div class="deals-track" id="deals-track">
+            <article class="prop-deal">
+              <div class="pd-firm">Apex Trader Funding <span class="pd-badge">Best value</span></div>
+              <div class="pd-metric">The most popular futures firm. Up to 20 accounts and 100% of your first $25K in profits.</div>
+              <div class="pd-off">50% off <span>code BDM</span></div>
+            </article>
+            <article class="prop-deal">
+              <div class="pd-firm">Tradeify <span class="pd-badge">Skip the eval</span></div>
+              <div class="pd-metric">Straight-to-funded plans that skip the evaluation and get you on real capital fast.</div>
+              <div class="pd-off">30% off <span>code BDM</span></div>
+            </article>
+            <article class="prop-deal">
+              <div class="pd-firm">TakeProfitTrader <span class="pd-badge">Daily payouts</span></div>
+              <div class="pd-metric">Withdraw profits daily from day one, with clean, trader-first payout terms.</div>
+              <div class="pd-off">30% off <span>code BDM</span></div>
+            </article>
+            <article class="prop-deal">
+              <div class="pd-firm">FundedFuturesFamily <span class="pd-badge">Easy rules</span></div>
+              <div class="pd-metric">Choose your own rules. Flexible, forgiving plans with a clear path to funded.</div>
+              <div class="pd-off">20% off <span>code BDM</span></div>
+            </article>
+            <article class="prop-deal">
+              <div class="pd-firm">Alpha Futures <span class="pd-badge">Better risk</span></div>
+              <div class="pd-metric">Trader-friendly risk rules and a consistency model built for professionals, not gotchas.</div>
+              <div class="pd-off">10% off <span>code BDM</span></div>
+            </article>
+            <article class="prop-deal">
+              <div class="pd-firm">FundedNext <span class="pd-badge">Fastest payouts</span></div>
+              <div class="pd-metric">Eval to payout in as little as four days, among the fastest cycles in the game.</div>
+              <div class="pd-off">5% off <span>code BDM</span></div>
+            </article>
+            <a class="deal-more" href="#">
+              <span class="dm-icon">&#8594;</span>
+              <span>Explore all partners</span>
+            </a>
+          </div>
+          <button class="deals-nav next" id="deals-next" type="button" aria-label="Scroll partners right">&#8250;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARKET PULSE terminal -->
+    <section id="pulse">
+      <div class="wrap">
+        <div class="section-head">
+          <div id="mkt-status" class="mkt-status"><span class="dot"></span> <span class="lbl">Checking market...</span></div>
+          <h2>The desk, live.</h2>
+          <p>Sentiment, the tape, and what the room is hitting, in real time.</p>
+        </div>
+        <div class="desk">
+          <article class="desk-card sentiment reveal">
+            <div class="dc-head"><span class="live-dot"></span> Market sentiment</div>
+            <div class="gauge-wrap">
+              <svg class="gauge-arc" viewBox="0 0 200 124" aria-hidden="true">
+                <defs><linearGradient id="garc" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#cf6b62"/><stop offset="0.5" stop-color="#e8a13c"/><stop offset="1" stop-color="#4ebc97"/>
+                </linearGradient></defs>
+                <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="url(#garc)" stroke-width="10" stroke-linecap="round"/>
+                <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#000" stroke-opacity="0.18" stroke-width="10" stroke-linecap="round" stroke-dasharray="0.5 6"/>
+                <circle id="sent-marker" cx="100" cy="20" r="7" fill="#ece8e1" stroke="#0b0b0d" stroke-width="2.5" />
+              </svg>
+              <div class="gauge-read"><span class="val mono" id="sent-val">68</span><span class="lab" id="sent-lab">RISK-ON</span></div>
+            </div>
+            <div class="scale"><span>Fear</span><span>Neutral</span><span>Greed</span></div>
+            <div class="sent-stats">
+              <div class="ss-row"><span>Advancers</span><span class="mono up" id="ss-adv">0</span></div>
+              <div class="ss-row"><span>Decliners</span><span class="mono down" id="ss-dec">0</span></div>
+              <div class="ss-row"><span>Net change, avg</span><span class="mono" id="ss-net">+0.00%</span></div>
+              <div class="ss-row"><span>Updated</span><span class="mono muted" id="ss-upd">--:--:--</span></div>
+            </div>
+            <div class="top-mover">
+              <span class="tm-label">Today's standout</span>
+              <span class="tm-val"><span id="tm-sym">--</span><span class="mono" id="tm-chg">+0.00%</span></span>
+            </div>
+            <div class="ss-trend">Session trend</div>
+            <svg id="sent-spark" class="spark wide" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path d=""/></svg>
+          </article>
+
+          <article class="desk-card tape reveal">
+            <div class="dc-head"><span class="live-dot"></span> The tape <span class="dc-sub" id="breadth"></span></div>
+            <div class="tape-list" id="tape-list"></div>
+          </article>
+
+          <article class="desk-card wins reveal">
+            <div class="dc-head"><span class="live-dot"></span> On the desk</div>
+            <div class="marquee"><div class="marquee-track" id="wins-track"></div></div>
+          </article>
+
+          <article class="desk-card sched reveal">
+            <div class="dc-head"><span class="live-dot"></span> Next on the network</div>
+            <div class="sched-list" id="sched-list"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- NETWORK / COMMUNITY media -->
+    <section id="network">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>A disciplined community, always on air.</h2>
+          <p>Daily live sessions, podcasts and breakdowns with Max and the team. Process over excuses.</p>
+        </div>
+        <div class="feature">
+          <a class="media reveal" href="#">
+            <span class="badge live">LIVE</span>
+            <img src="https://picsum.photos/seed/mot-opening-bell/1000/700" alt="Opening Bell Live broadcast" />
+            <div class="cap"><div class="t">Opening Bell Live</div><div class="s">Weekdays · 9:30 ET</div></div>
+          </a>
+          <div class="media-col">
+            <a class="media sm reveal" href="#">
+              <img src="https://picsum.photos/seed/mot-podcast-max/700/420" alt="After Hours podcast" />
+              <div class="cap"><div class="t">After Hours with Max</div><div class="s">Podcast</div></div>
+            </a>
+            <a class="media sm reveal" href="#">
+              <img src="https://picsum.photos/seed/mot-funded-interview/700/420" alt="Funded trader interview" />
+              <div class="cap"><div class="t">The Funded Interviews</div><div class="s">Series</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">What traders are saying</p>
+          <h2>Vetted by over 70,000 traders.</h2>
+        </div>
+        <div class="t-grid">
+          <figure class="tcard reveal">
+            <p class="quote">"The ORB Trader got me through my eval in four days. The discipline rules are what changed my trading, not just the signals."</p>
+            <figcaption class="who"><span class="av"><img src="https://picsum.photos/seed/trader-andre/80/80" alt=""></span><span><span class="name">Andre Okafor</span><br><span class="role">Funded, NQ</span></span></figcaption>
+          </figure>
+          <figure class="tcard reveal">
+            <p class="quote">"First community where the focus is process over hype. The daily lives are worth the membership alone."</p>
+            <figcaption class="who"><span class="av"><img src="https://picsum.photos/seed/trader-priya/80/80" alt=""></span><span><span class="name">Priya Raman</span><br><span class="role">2 years in</span></span></figcaption>
+          </figure>
+          <figure class="tcard reveal">
+            <p class="quote">"Went from blowing accounts to a 90% payout split. The coaching reviews fixed my execution fast."</p>
+            <figcaption class="who"><span class="av"><img src="https://picsum.photos/seed/trader-marcus/80/80" alt=""></span><span><span class="name">Marcus DiSalvo</span><br><span class="role">Funded, ES</span></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Frequently asked questions.</h2>
+          <p>The things traders ask us most. Still stuck? The free Discord and support team have your back.</p>
+        </div>
+        <div class="faq-grid">
+          <details class="faq-item reveal">
+            <summary>Is this community suitable for beginners?</summary>
+            <div class="faq-a">Absolutely. We have traders at every level, from complete beginners to funded prop firm traders. The courses, live breakdowns, and coaching are built to help you grow at every stage.</div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Do you offer a free trial?</summary>
+            <div class="faq-a">Not at this time. We do publish a lot of free educational content on YouTube, so you can see our strategies and teaching style before you buy.</div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Are the indicators beginner-friendly?</summary>
+            <div class="faq-a">Yes. They are powerful but easy to understand, and we back them with tutorials, live examples during shows, and community support.</div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Do MOT indicators work with prop firms?</summary>
+            <div class="faq-a">Yes. Many members join specifically to improve evaluation performance. We focus on discipline, risk management, and high-probability setups, which are exactly what passing and holding a funded account requires.</div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>How do I link my TradingView username?</summary>
+            <div class="faq-a">From the top-right of your Dashboard, one time only. Once linked, indicator access is granted to that account automatically.</div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>What time are the live shows?</summary>
+            <div class="faq-a">Three daily shows: the Big Daddy Morning Show 9:30 to 11:30 AM EST, Power Hour 2:45 to 4:15 PM EST (Mon to Fri), and Happy Hour 5:45 to 7:45 PM EST (Sun to Thu).</div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>How do I upgrade or cancel my subscription?</summary>
+            <div class="faq-a">Everything is self-serve under Dashboard, then Billing, then Manage Billing. You can change or cancel at any time.</div>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Which prop firms do you recommend?</summary>
+            <div class="faq-a">Top-tier firms we personally trust and trade. See the Beat Props section and the Partners page for our recommended firms and member discounts.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY CTA -->
+    <section id="community">
+      <div class="wrap">
+        <span class="avail"><span class="d"></span> 70,000+ traders inside right now</span>
+        <h2>Step onto the floor.</h2>
+        <p>Indicators, education, coaching and a relentless community, all in one place. Your edge starts free.</p>
+        <div class="hero-cta" style="justify-content:center;display:flex;gap:13px">
+          <a class="btn btn-primary" href="#">Join free Discord</a>
+          <a class="btn btn-ghost" href="#">Get a free indicator</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© 2026 Max Options Trading. Built for WealthCharts and TradingView.</div>
+      <div class="links"><a href="#">Discord</a><a href="#">YouTube</a><a href="#">X</a><a href="#">Instagram</a><a href="#faq">FAQ</a></div>
+    </div>
+  </footer>
+
+  <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
